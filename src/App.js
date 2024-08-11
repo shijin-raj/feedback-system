@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button, DatePicker, Input } from 'antd';
+import StarRating from './components/rating';
+import { useState } from 'react';
 
 function App() {
+  const [showRating,setShowRating] = useState(true);
+
+  const handleRateBtn = ()=>{
+    setShowRating(!showRating);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div style={{ padding: 20,display:'flex',alignItems:'center',justifyContent:'center' }}>
+     
+      {showRating?(    <StarRating setShowRating={setShowRating}></StarRating>):( <Button type="primary"
+      onClick={handleRateBtn}
+      >Rate</Button>)}
+  </div>
   );
 }
 
